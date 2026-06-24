@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #030606;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(56, 248, 255, 0.13), transparent 28rem),
+    radial-gradient(circle at 82% 4%, rgba(124, 255, 107, 0.11), transparent 24rem),
+    linear-gradient(180deg, #030606 0%, #050b0b 46%, #030606 100%);
+  color: #e8ffff;
+}
+
+body::before {
+  pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.18;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  mix-blend-mode: screen;
+}
+
+body::after {
+  pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(56, 248, 255, 0.035),
+    transparent
+  );
+  animation: scan 8s linear infinite;
+}
+
+::selection {
+  background: rgba(124, 255, 107, 0.3);
+  color: #ffffff;
+}
+
+@layer components {
+  .circuit-panel {
+    border: 1px solid rgba(56, 248, 255, 0.22);
+    background:
+      linear-gradient(135deg, rgba(56, 248, 255, 0.08), transparent 32%),
+      rgba(7, 19, 19, 0.72);
+    box-shadow:
+      inset 0 0 0 1px rgba(124, 255, 107, 0.06),
+      0 20px 70px rgba(0, 0, 0, 0.44);
+    backdrop-filter: blur(18px);
+  }
+
+  .terminal-edge {
+    position: relative;
+  }
+
+  .terminal-edge::before,
+  .terminal-edge::after {
+    content: "";
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    pointer-events: none;
+  }
+
+  .terminal-edge::before {
+    left: -1px;
+    top: -1px;
+    border-left: 1px solid #38f8ff;
+    border-top: 1px solid #38f8ff;
+    box-shadow: -4px -4px 18px rgba(56, 248, 255, 0.22);
+  }
+
+  .terminal-edge::after {
+    right: -1px;
+    bottom: -1px;
+    border-right: 1px solid #7cff6b;
+    border-bottom: 1px solid #7cff6b;
+    box-shadow: 4px 4px 18px rgba(124, 255, 107, 0.18);
+  }
+
+  .section-shell {
+    width: min(1180px, calc(100% - 32px));
+    margin-inline: auto;
+  }
+
+  .signal-title {
+    font-family: var(--font-jetbrains), monospace;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+}
