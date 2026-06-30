@@ -15,7 +15,7 @@ export const home = {
     },
     resume: {
       label: "Download Resume",
-      href: "/resume.pdf"
+      href: "resume.pdf"
     }
   },
   metrics: [
