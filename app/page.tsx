@@ -38,8 +38,8 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-x-0 top-0 z-40 h-px bg-gradient-to-r from-transparent via-cyan to-transparent animate-pulseLine" />
 
       <header className="fixed inset-x-0 top-0 z-30 border-b border-cyan/10 bg-void/75 backdrop-blur-xl">
-        <nav className="section-shell flex h-16 items-center justify-between" aria-label="Primary navigation">
-          <a href="#home" className="font-mono text-sm font-semibold text-white">
+        <nav className="section-shell flex h-16 items-center justify-between gap-4" aria-label="Primary navigation">
+          <a href="#home" className="shrink-0 font-mono text-sm font-semibold text-white">
             <span className="text-cyan">&lt;</span>VR<span className="text-neon">/cloud</span>
             <span className="text-cyan">&gt;</span>
           </a>
@@ -52,12 +52,21 @@ export default function Home() {
           </div>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 border border-neon/30 px-3 py-2 font-mono text-xs text-neon transition hover:bg-neon/10"
+            className="inline-flex shrink-0 items-center gap-2 border border-neon/30 px-3 py-2 font-mono text-xs text-neon transition hover:bg-neon/10"
           >
             <Terminal size={14} aria-hidden="true" />
             connect
           </a>
         </nav>
+        <div className="border-t border-cyan/10 md:hidden">
+          <div className="section-shell flex gap-4 overflow-x-auto py-3 text-xs font-medium uppercase text-muted">
+            {navItems.map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="shrink-0 transition hover:text-neon">
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
       </header>
 
       <section id="home" className="section-shell flex min-h-screen scroll-mt-24 items-center pb-20 pt-28">
